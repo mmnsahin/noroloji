@@ -60,6 +60,19 @@ details.kon>summary .chev{margin-left:auto}
 h4.sec{font-size:.95rem;margin:14px 0 4px;color:var(--scrub);border-bottom:2px solid var(--scrub-tint);padding-bottom:3px}
 ul.it{margin:6px 0 0;padding-left:20px;font-family:var(--serif);font-size:1.02rem;line-height:1.6}
 ul.it li{margin:5px 0}
+h4.sec{display:flex;align-items:center;gap:8px}
+.badge{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;font-family:var(--sans);font-weight:700;padding:2px 7px;border-radius:999px;background:var(--scrub-tint);color:var(--scrub)}
+.badge.b-tanim{background:#E6F2EA;color:#1F6B43}.badge.b-klinik{background:#FBE9E7;color:#A33A2B}.badge.b-tani{background:#EAE6F5;color:#523C94}.badge.b-tedavi{background:#FBF1DF;color:#8A5200}.badge.b-nden{background:#E4ECF6;color:#1D4E89}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .badge.b-tanim{background:#173225;color:#7FD3A3}:root:not([data-theme="light"]) .badge.b-klinik{background:#3A1E1A;color:#F29A8B}:root:not([data-theme="light"]) .badge.b-tani{background:#26203F;color:#B7A6F0}:root:not([data-theme="light"]) .badge.b-tedavi{background:#2D2414;color:#F0B86A}:root:not([data-theme="light"]) .badge.b-nden{background:#1B2635;color:#8DB8EA}}
+.tw{overflow-x:auto;margin:10px 0 4px;border:1px solid var(--line);border-radius:10px}
+table.tb{border-collapse:collapse;width:100%;min-width:420px;font-size:.93rem;font-family:var(--sans)}
+table.tb th{background:var(--scrub-tint);color:var(--scrub);text-align:left;font-weight:700;padding:8px 10px;white-space:nowrap}
+table.tb td{padding:8px 10px;vertical-align:top;border-top:1px solid var(--line);line-height:1.45}
+table.tb tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--scrub-tint) 35%,transparent)}
+table.tb td:first-child{font-weight:600}
+table.kv td:first-child{width:30%;color:var(--scrub)}
+table.kv tr.starred td{background:var(--star-bg)}
+.tcap{font-size:.8rem;color:var(--muted);margin:8px 0 0;font-weight:600}
 li.starred{background:var(--star-bg);border-radius:6px;padding:2px 6px;margin-left:-6px}
 mark{background:#F5E27A;color:#18211D;border-radius:2px}
 .none{color:var(--muted);padding:30px 0}
@@ -80,7 +93,7 @@ mark{background:#F5E27A;color:#18211D;border-radius:2px}
   </div>
 </header>
 <div class="wrap"><main id="m"></main></div>
-<script src="data/d01_lezyon.js"></script><script src="data/d02_koma.js"></script><script src="data/d03_sss_enf.js"></script><script src="data/d04_bayilma.js"></script><script src="data/d05_basagrisi.js"></script><script src="data/d06_kuvvet.js"></script><script src="data/d07_hareket.js"></script><script src="data/d08_inme.js"></script><script src="data/d09_vertigo.js"></script><script src="data/d10_uyku_duyu.js"></script><script src="data/d12_demans.js"></script><script src="data/d13_nrs_travma.js"></script><script src="data/d14_nrs_diger.js"></script><script src="data/d15_kitap_ekstra.js"></script>
+<script src="data/d01_lezyon.js"></script><script src="data/d02_koma.js"></script><script src="data/d03_sss_enf.js"></script><script src="data/d04_bayilma.js"></script><script src="data/d05_basagrisi.js"></script><script src="data/d06_kuvvet.js"></script><script src="data/d07_hareket.js"></script><script src="data/d08_inme.js"></script><script src="data/d09_vertigo.js"></script><script src="data/d10_uyku_duyu.js"></script><script src="data/d12_demans.js"></script><script src="data/d13_nrs_travma.js"></script><script src="data/d14_nrs_diger.js"></script><script src="data/d15_kitap_ekstra.js"></script><script src="data/d99_tablolar.js"></script>
 <script>
 const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const m=document.getElementById('m'),s=document.getElementById('s');
@@ -90,14 +103,28 @@ const openD=new Set();
 function render(){
   const f=s.value.trim().toLowerCase();
   const hl=f.length>=2?t=>t.replace(new RegExp(f.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),x=>`<mark>${x}</mark>`):t=>t;
-  const item=t=>{const st=t.startsWith('★');const body=esc(t).replace(/★/g,'<b class="st">★</b>');return `<li${st?' class="starred"':''}>${hl(body)}</li>`};
+  const fmt=t=>hl(esc(t).replace(/★/g,'<b class="st">★</b>'));
+  const item=t=>`<li${t.startsWith('★')?' class="starred"':''}>${fmt(t)}</li>`;
+  const KV=/^(★\s*)?([^:★]{2,52}):\s+(.+)$/s;
+  const badge=n=>{const l=n.toLowerCase();const c=/tanım/.test(l)?'tanim':/klinik|bulgu/.test(l)?'klinik':/tanı|tetkik/.test(l)?'tani':/tedavi|ilaç/.test(l)?'tedavi':/neden|etiyoloji|etyoloji|sınıf/.test(l)?'nden':'';return c?`<span class="badge b-${c}">${c==='tanim'?'Tanım':c==='klinik'?'Klinik':c==='tani'?'Tanı':c==='tedavi'?'Tedavi':'Neden/Sınıf'}</span>`:''};
+  const tbl=o=>`${o.cap?`<p class="tcap">${fmt(o.cap)}</p>`:''}<div class="tw"><table class="tb"><thead><tr>${o.h.map(x=>`<th>${fmt(x)}</th>`).join('')}</tr></thead><tbody>${o.r.map(r=>`<tr>${r.map(x=>`<td>${fmt(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const render_items=items=>{
+    const tabs=items.filter(x=>typeof x==='object').map(tbl).join('');
+    const txt=items.filter(x=>typeof x==='string');
+    const kv=txt.map(t=>KV.exec(t));
+    let out=tabs;
+    if(txt.length>=3&&kv.filter(Boolean).length>=Math.ceil(txt.length*0.7)){
+      out+=`<div class="tw"><table class="tb kv"><tbody>${txt.map((t,i)=>{const k=kv[i];return k?`<tr${k[1]?' class="starred"':''}><td>${fmt((k[1]?'★ ':'')+k[2])}</td><td>${fmt(k[3])}</td></tr>`:`<tr${t.startsWith('★')?' class="starred"':''}><td colspan="2">${fmt(t)}</td></tr>`}).join('')}</tbody></table></div>`;
+    }else if(txt.length) out+=`<ul class="it">${txt.map(item).join('')}</ul>`;
+    return out;
+  };
   let h='',shown=0,total=0;
   DERS.forEach(d=>{
     const mk=list=>list.map(k=>{
       const secs=k.bolumler.map(([n,items])=>{
-        const its=items.filter(t=>(!f||(t+' '+n+' '+k.b+' '+d.title).toLowerCase().includes(f))&&(!onlyStar||t.includes('★')));
+        const its=items.filter(t=>{const tx=typeof t==='string'?t:JSON.stringify(t);return (!f||(tx+' '+n+' '+k.b+' '+d.title).toLowerCase().includes(f))&&(!onlyStar||(typeof t==='string'?t.includes('★'):t.star))});
         if(!its.length)return '';
-        return `<h4 class="sec">${hl(esc(n))}</h4><ul class="it">${its.map(item).join('')}</ul>`;
+        return `<h4 class="sec">${badge(n)}<span>${hl(esc(n))}</span></h4>${render_items(its)}`;
       }).join('');
       if(!secs)return '';
       total++;
