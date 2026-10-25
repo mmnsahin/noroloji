@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nöroloji Sözlü</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F7F4; --card:#FFFFFF; --ink:#18211D; --muted:#5E6B64; --line:#D5DBD6;
+  --scrub:#1D4E89; --scrub-tint:#E4ECF6; --warn:#8A5200; --warn-bg:#FBF1DF;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  box-sizing:border-box;
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#121614; --card:#1A201D; --ink:#E4EAE6; --muted:#9AA8A0; --line:#2C3531;
+  --scrub:#8DB8EA; --scrub-tint:#1B2635; --warn:#F0B86A; --warn-bg:#2D2414;}}
+:root[data-theme="dark"]{
+  --paper:#121614; --card:#1A201D; --ink:#E4EAE6; --muted:#9AA8A0; --line:#2C3531;
+  --scrub:#8DB8EA; --scrub-tint:#1B2635; --warn:#F0B86A; --warn-bg:#2D2414;}
+
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--scrub)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--scrub);outline-offset:2px}
+
+.wrap{max-width:640px;margin:0 auto;padding:56px 24px 80px}
+h1{font-size:clamp(1.9rem,5vw,2.6rem);line-height:1.12;margin:0 0 32px;font-weight:700;letter-spacing:-.01em}
+.lead{margin:0 0 32px;color:var(--muted)}
+
+.menu{display:flex;flex-direction:column;gap:12px}
+.menu a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;background:var(--card);border:1px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink);font-size:1.15rem;font-weight:700;transition:border-color .15s,background .15s}
+.menu a small{display:block;font-size:.88rem;font-weight:400;color:var(--muted);margin-top:2px}
+.menu a span.chev{color:var(--scrub);font-size:1.4rem;line-height:1}
+.menu a:hover{border-color:var(--scrub);background:var(--scrub-tint)}
+
+.wish{margin:28px 0 0;padding:12px 14px;background:var(--scrub-tint);color:var(--scrub);border-radius:8px;font-weight:600}
+
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>Nöroloji Çalışma Sitesi</h1>
+
+  <nav class="menu" aria-label="Sayfalar">
+    <a href="excel/index.html"><div>Excel<small>Çıkmış sözlü soruları ve cevapları, jüri gruplarına göre</small></div><span class="chev" aria-hidden="true">›</span></a>
+    <a href="muayene/index.html"><div>Muayene<small>Nörolojik muayene basamakları, işaretlenebilir liste</small></div><span class="chev" aria-hidden="true">›</span></a>
+  </nav>
+
+  <p class="wish">Herkese başarılar... ~MMNŞ</p>
+
+  
+</main>
+
+</body>
+</html>

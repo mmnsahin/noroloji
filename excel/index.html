@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Excel – Nöroloji Sözlü</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+html{scroll-padding-top:70px}
+:root{
+  --paper:#F6F7F4; --card:#FFFFFF; --ink:#18211D; --muted:#5E6B64; --line:#D5DBD6;
+  --scrub:#1D4E89; --scrub-tint:#E4ECF6; --warn:#8A5200; --warn-bg:#FBF1DF;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  box-sizing:border-box;
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#121614; --card:#1A201D; --ink:#E4EAE6; --muted:#9AA8A0; --line:#2C3531;
+  --scrub:#8DB8EA; --scrub-tint:#1B2635; --warn:#F0B86A; --warn-bg:#2D2414;}}
+:root[data-theme="dark"]{
+  --paper:#121614; --card:#1A201D; --ink:#E4EAE6; --muted:#9AA8A0; --line:#2C3531;
+  --scrub:#8DB8EA; --scrub-tint:#1B2635; --warn:#F0B86A; --warn-bg:#2D2414;}
+
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--scrub)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--scrub);outline-offset:2px}
+
+.bar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.barin{max-width:900px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:16px}
+.bartitle{font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav a{font-size:.95rem;font-weight:600;text-decoration:none;white-space:nowrap}
+
+header.top{max-width:900px;margin:0 auto;padding:28px 24px 20px}
+header.top h1{font-size:clamp(1.7rem,3.5vw,2.4rem);line-height:1.15;margin:0 0 6px;font-weight:700;letter-spacing:-.01em}
+header.top p{margin:0;color:var(--muted)}
+.notice{margin:12px 0 0;padding:10px 12px;background:var(--warn-bg);color:var(--warn);border-radius:8px;font-size:.9rem}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+.tools input[type=search]{flex:1 1 280px;min-width:0;padding:11px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:1rem;font-family:inherit}
+.tbtn{padding:8px 14px;border:1px solid var(--scrub);border-radius:8px;background:transparent;color:var(--scrub);font-weight:600;cursor:pointer}
+.tbtn:hover{background:var(--scrub-tint)}
+
+.wrap{max-width:900px;margin:0 auto;padding:0 24px 80px}
+section.topic{margin-bottom:44px}
+section.topic>h2{font-size:1.45rem;margin:0 0 4px;font-weight:700}
+section.topic>.sub{color:var(--muted);font-size:.92rem;margin:0 0 14px}
+
+details.q{border-top:1px solid var(--line)}
+details.q:last-child{border-bottom:1px solid var(--line)}
+details.q>summary{list-style:none;display:grid;grid-template-columns:64px minmax(0,1fr) 20px;gap:14px;align-items:baseline;padding:14px 4px;cursor:pointer}
+details.q>summary::-webkit-details-marker{display:none}
+details.q>summary:focus-visible{outline:2px solid var(--scrub);outline-offset:-2px}
+.freq{font-size:1.6rem;font-weight:700;color:var(--scrub);font-variant-numeric:tabular-nums;line-height:1;text-align:right}
+.qt{font-weight:600;font-size:1.05rem;line-height:1.35}
+.chev{color:var(--muted);transition:transform .15s}
+details.q[open] .chev{transform:rotate(90deg)}
+.body{padding:2px 4px 22px 82px}
+
+.merged{font-family:var(--serif);font-size:1.04rem;line-height:1.62;max-width:72ch}
+.merged h4{font-family:var(--sans);font-size:.98rem;margin:16px 0 6px;color:var(--scrub);border-bottom:2px solid var(--scrub-tint);padding-bottom:4px}
+.merged h4:first-child{margin-top:0}
+.merged ul{margin:0 0 10px;padding-left:22px}
+.merged li{margin:3px 0}
+.none{color:var(--muted);padding:30px 0}
+mark{background:#F5E27A;color:#18211D;border-radius:2px}
+
+@media (max-width:860px){
+  details.q>summary{grid-template-columns:44px minmax(0,1fr) 16px;gap:10px}
+  .freq{font-size:1.3rem}
+  .body{padding-left:4px}
+}
+@media (prefers-reduced-motion:reduce){.chev{transition:none}}
+</style>
+</head>
+<body>
+<div class="bar"><div class="barin"><a href="../index.html" style="flex:0 0 auto;font-weight:600;font-size:.95rem;text-decoration:none;white-space:nowrap;border:1px solid var(--scrub);border-radius:8px;padding:6px 12px">Ana sayfa</a><span class="bartitle">Nöroloji – Excel</span></div></div>
+<header class="top">
+  <h1>Nöroloji – Excel</h1>
+  <p id="cnt"></p>
+  <div class="tools">
+    <input type="search" id="s" placeholder="Soru veya cevapta ara" aria-label="Ara">
+    <button class="tbtn" id="o">Tümünü aç</button>
+    <button class="tbtn" id="c">Tümünü kapat</button>
+  </div>
+</header>
+<div class="wrap"><main id="m"></main></div>
+<script src="data/answers_a.js"></script><script src="data/answers_b.js"></script><script src="data/answers_c.js"></script><script src="data/questions.js"></script>
+<script>
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const m=document.getElementById('m'),s=document.getElementById('s');
+function render(){
+  const f=s.value.trim().toLowerCase();
+  const hl=f.length>=2?t=>t.replace(new RegExp(f.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),x=>`<mark>${x}</mark>`):t=>t;
+  let n=0,shown=0,h='';
+  ENTRIES.forEach(e=>{let part='',cnt=0;
+    e.q.forEach(([q,k])=>{n++;const as=k.split('+').map(x=>ANSWERS[x]||{t:'',b:[]});
+      const txt=(q+' '+as.map(a=>a.t+' '+a.b.join(' ')).join(' ')).toLowerCase();
+      if(f&&!txt.includes(f))return;shown++;cnt++;
+      const inner=as.map(a=>`${a.t?`<h4>${hl(esc(a.t))}</h4>`:''}<ul>${a.b.map(x=>`<li>${hl(esc(x))}</li>`).join('')}</ul>`).join('');
+      part+=`<details class="q"${f?' open':''}><summary><span class="freq">${n}</span><span class="qt">${hl(esc(q))}</span><span class="chev" aria-hidden="true">›</span></summary><div class="body"><div class="merged">${inner}</div></div></details>`;});
+    if(part)h+=`<section class="topic"><h2>${esc(e.j)}</h2><p class="sub">${cnt} soru</p>${part}</section>`;});
+  m.innerHTML=h||`<p class="none">"${esc(s.value)}" için sonuç yok. Farklı bir kelime dene.</p>`;
+  document.getElementById('cnt').textContent=f?`${shown} soru bulundu.`:`${shown} soru.`;
+}
+let t;s.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(render,150)});
+document.getElementById('o').onclick=()=>document.querySelectorAll('details.q').forEach(d=>d.open=true);
+document.getElementById('c').onclick=()=>document.querySelectorAll('details.q').forEach(d=>d.open=false);
+render();
+</script>
+</body>
+</html>
