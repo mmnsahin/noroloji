@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Konu anlatımı – Nöroloji</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+html{scroll-padding-top:70px}
+:root{
+  --paper:#F6F7F4; --card:#FFFFFF; --ink:#18211D; --muted:#5E6B64; --line:#D5DBD6;
+  --scrub:#1D4E89; --scrub-tint:#E4ECF6; --warn:#8A5200; --warn-bg:#FBF1DF; --star:#B7791F; --star-bg:#FBF1DF;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  box-sizing:border-box; padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#121614; --card:#1A201D; --ink:#E4EAE6; --muted:#9AA8A0; --line:#2C3531;
+  --scrub:#8DB8EA; --scrub-tint:#1B2635; --warn:#F0B86A; --warn-bg:#2D2414; --star:#F0B86A; --star-bg:#2D2414;}}
+:root[data-theme="dark"]{
+  --paper:#121614; --card:#1A201D; --ink:#E4EAE6; --muted:#9AA8A0; --line:#2C3531;
+  --scrub:#8DB8EA; --scrub-tint:#1B2635; --warn:#F0B86A; --warn-bg:#2D2414; --star:#F0B86A; --star-bg:#2D2414;}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5}
+a{color:var(--scrub)} button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--scrub);outline-offset:2px}
+.bar{position:sticky;top:0;z-index:30;background:var(--paper);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.barin{max-width:900px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.home{flex:0 0 auto;font-weight:600;font-size:.95rem;text-decoration:none;white-space:nowrap;border:1px solid var(--scrub);border-radius:8px;padding:6px 12px}
+.bartitle{font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+header.top{max-width:900px;margin:0 auto;padding:28px 16px 12px}
+header.top h1{font-size:clamp(1.7rem,3.5vw,2.4rem);line-height:1.15;margin:0 0 6px;font-weight:700}
+header.top p{margin:0;color:var(--muted)}
+.legend{margin-top:12px !important;padding:10px 12px;background:var(--star-bg);color:var(--warn) !important;border-radius:8px;font-size:.92rem}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.tools input[type=search]{flex:1 1 260px;min-width:0;padding:11px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font-size:1rem;font-family:inherit}
+.tbtn{padding:8px 14px;border:1px solid var(--scrub);border-radius:8px;background:transparent;color:var(--scrub);font-weight:600;cursor:pointer}
+.tbtn:hover{background:var(--scrub-tint)}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px 80px}
+details.ders{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:12px 0;overflow:hidden}
+details.ders>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:36px minmax(0,1fr) 18px;gap:12px;align-items:center;padding:14px 16px}
+details.ders>summary::-webkit-details-marker{display:none}
+.no{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--scrub-tint);color:var(--scrub);font-weight:700;font-size:.9rem}
+.dt{font-weight:700;font-size:1.08rem;line-height:1.3}
+.dh{display:block;font-weight:400;font-size:.86rem;color:var(--muted);margin-top:2px}
+.chev{color:var(--muted);transition:transform .15s}
+details[open]>summary .chev{transform:rotate(90deg)}
+.dbody{padding:0 16px 18px;border-top:1px solid var(--line)}
+.ozet{font-family:var(--serif);font-size:1.02rem;line-height:1.6;margin:14px 0 6px}
+.kay{font-size:.85rem;color:var(--muted);margin:0 0 8px}
+h3.ex{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:22px 0 4px}
+details.kon{border-top:1px solid var(--line)}
+details.kon>summary{list-style:none;cursor:pointer;display:flex;gap:8px;align-items:center;padding:12px 2px;font-weight:600}
+details.kon>summary::-webkit-details-marker{display:none}
+details.kon>summary .chev{margin-left:auto}
+.st{color:var(--star);font-weight:700}
+.kbody{padding:0 2px 12px}
+h4.sec{font-size:.95rem;margin:14px 0 4px;color:var(--scrub);border-bottom:2px solid var(--scrub-tint);padding-bottom:3px}
+ul.it{margin:6px 0 0;padding-left:20px;font-family:var(--serif);font-size:1.02rem;line-height:1.6}
+ul.it li{margin:5px 0}
+li.starred{background:var(--star-bg);border-radius:6px;padding:2px 6px;margin-left:-6px}
+mark{background:#F5E27A;color:#18211D;border-radius:2px}
+.none{color:var(--muted);padding:30px 0}
+@media (prefers-reduced-motion:reduce){.chev{transition:none}}
+</style>
+</head>
+<body>
+<div class="bar"><div class="barin"><a class="home" href="../index.html">Ana sayfa</a><span class="bartitle">Konu anlatımı</span></div></div>
+<header class="top">
+  <h1>Konu anlatımı</h1>
+  <p id="cnt"></p>
+  <p class="legend"><b class="st">★</b> işareti, çıkmış sözlü anlatımlarında (PDF) sorulan yerleri gösterir. Dersler ders programı sırasındadır; her hastalık tanım → çeşitleri → klinik → tanı → tedavi sırasıyla verilmiştir. Son bölümler ders programında ayrı ders olmayan, ders notunda bulunan konulardır. Metin yapay zekâ ile slaytlar ve D4 Nöroloji Staj Kitabı kullanılarak yazıldı; doz ve ayrıntıları kaynaktan doğrulayın.</p>
+  <div class="tools">
+    <input type="search" id="s" placeholder="Konu, hastalık veya ilaç ara" aria-label="Ara">
+    <button class="tbtn" id="o">Dersleri aç</button>
+    <button class="tbtn" id="c">Tümünü kapat</button>
+    <button class="tbtn" id="y">Sadece ★</button>
+  </div>
+</header>
+<div class="wrap"><main id="m"></main></div>
+<script src="data/d01_lezyon.js"></script><script src="data/d02_koma.js"></script><script src="data/d03_sss_enf.js"></script><script src="data/d04_bayilma.js"></script><script src="data/d05_basagrisi.js"></script><script src="data/d06_kuvvet.js"></script><script src="data/d07_hareket.js"></script><script src="data/d08_inme.js"></script><script src="data/d09_vertigo.js"></script><script src="data/d10_uyku_duyu.js"></script><script src="data/d12_demans.js"></script><script src="data/d13_nrs_travma.js"></script><script src="data/d14_nrs_diger.js"></script><script src="data/d15_kitap_ekstra.js"></script>
+<script>
+const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const m=document.getElementById('m'),s=document.getElementById('s');
+const DERS=KONU.slice().sort((a,b)=>a.no-b.no);
+let onlyStar=false;
+const openD=new Set();
+function render(){
+  const f=s.value.trim().toLowerCase();
+  const hl=f.length>=2?t=>t.replace(new RegExp(f.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),x=>`<mark>${x}</mark>`):t=>t;
+  const item=t=>{const st=t.startsWith('★');const body=esc(t).replace(/★/g,'<b class="st">★</b>');return `<li${st?' class="starred"':''}>${hl(body)}</li>`};
+  let h='',shown=0,total=0;
+  DERS.forEach(d=>{
+    const mk=list=>list.map(k=>{
+      const secs=k.bolumler.map(([n,items])=>{
+        const its=items.filter(t=>(!f||(t+' '+n+' '+k.b+' '+d.title).toLowerCase().includes(f))&&(!onlyStar||t.includes('★')));
+        if(!its.length)return '';
+        return `<h4 class="sec">${hl(esc(n))}</h4><ul class="it">${its.map(item).join('')}</ul>`;
+      }).join('');
+      if(!secs)return '';
+      total++;
+      return `<details class="kon"${(f||onlyStar)?' open':''}><summary>${k.yildiz?'<span class="st">★</span>':''}<span>${hl(esc(k.b))}</span><span class="chev" aria-hidden="true">›</span></summary><div class="kbody">${secs}</div></details>`;
+    }).join('');
+    const main=mk(d.konular),ex=d.ekstra?mk(d.ekstra):'';
+    if(!main&&!ex)return;
+    shown++;
+    const isOpen=f||onlyStar||openD.has(d.id);
+    h+=`<details class="ders" data-id="${d.id}"${isOpen?' open':''}><summary><span class="no">${d.no}</span><span class="dt">${hl(esc(d.title))}<span class="dh">${esc(d.hoca)}</span></span><span class="chev" aria-hidden="true">›</span></summary><div class="dbody"><p class="ozet">${esc(d.ozet)}</p><p class="kay">Kaynak: ${esc(d.kaynak)}</p>${main}${ex?`<h3 class="ex">Derste anlatılmayan, ders notunda olan bölümler</h3>${ex}`:''}</div></details>`;
+  });
+  m.innerHTML=h||`<p class="none">"${esc(s.value)}" için sonuç yok.</p>`;
+  document.getElementById('cnt').textContent=(f||onlyStar)?`${shown} ders, ${total} konu bulundu.`:`${DERS.length} ders, ${DERS.reduce((a,d)=>a+d.konular.length+(d.ekstra?d.ekstra.length:0),0)} konu başlığı.`;
+}
+m.addEventListener('toggle',e=>{const d=e.target;if(d.matches&&d.matches('details.ders')){d.open?openD.add(d.dataset.id):openD.delete(d.dataset.id)}},true);
+let t;s.addEventListener('input',()=>{clearTimeout(t);t=setTimeout(render,150)});
+document.getElementById('o').onclick=()=>document.querySelectorAll('details.ders').forEach(d=>d.open=true);
+document.getElementById('c').onclick=()=>{openD.clear();document.querySelectorAll('details').forEach(d=>d.open=false)};
+document.getElementById('y').onclick=function(){onlyStar=!onlyStar;this.textContent=onlyStar?'Hepsini göster':'Sadece ★';render()};
+render();
+</script>
+</body>
+</html>
