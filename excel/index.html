@@ -90,19 +90,21 @@ mark{background:#F5E27A;color:#18211D;border-radius:2px}
 <div class="wrap"><main id="m"></main></div>
 <script src="data/answers_a.js"></script><script src="data/answers_b.js"></script><script src="data/answers_c.js"></script><script src="data/questions.js"></script>
 <script>
+// Hoca isimlerini göstermek için true yap.
+const SHOW_NAMES=false;
 const esc=s=>s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const m=document.getElementById('m'),s=document.getElementById('s');
 function render(){
   const f=s.value.trim().toLowerCase();
   const hl=f.length>=2?t=>t.replace(new RegExp(f.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi'),x=>`<mark>${x}</mark>`):t=>t;
   let n=0,shown=0,h='';
-  ENTRIES.forEach(e=>{let part='',cnt=0;
+  ENTRIES.forEach((e,i)=>{let part='',cnt=0;
     e.q.forEach(([q,k])=>{n++;const as=k.split('+').map(x=>ANSWERS[x]||{t:'',b:[]});
       const txt=(q+' '+as.map(a=>a.t+' '+a.b.join(' ')).join(' ')).toLowerCase();
       if(f&&!txt.includes(f))return;shown++;cnt++;
       const inner=as.map(a=>`${a.t?`<h4>${hl(esc(a.t))}</h4>`:''}<ul>${a.b.map(x=>`<li>${hl(esc(x))}</li>`).join('')}</ul>`).join('');
       part+=`<details class="q"${f?' open':''}><summary><span class="freq">${n}</span><span class="qt">${hl(esc(q))}</span><span class="chev" aria-hidden="true">›</span></summary><div class="body"><div class="merged">${inner}</div></div></details>`;});
-    if(part)h+=`<section class="topic"><h2>${esc(e.j)}</h2><p class="sub">${cnt} soru</p>${part}</section>`;});
+    if(part)h+=`<section class="topic"><h2>${esc(SHOW_NAMES?e.j:'Sözlü '+(i+1))}</h2><p class="sub">${cnt} soru</p>${part}</section>`;});
   m.innerHTML=h||`<p class="none">"${esc(s.value)}" için sonuç yok. Farklı bir kelime dene.</p>`;
   document.getElementById('cnt').textContent=f?`${shown} soru bulundu.`:`${shown} soru.`;
 }
